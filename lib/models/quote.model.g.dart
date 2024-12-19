@@ -7,8 +7,8 @@ part of 'quote.model.dart';
 // **************************************************************************
 
 Quote _$QuoteFromJson(Map<String, dynamic> json) => Quote(
-      json['id'] as String,
-      json['authorId'] as String,
+      json['uuid'] as String,
+      nestedReader(json, 'author/uuid') as String,
       json['content'] as String,
       json['author'] == null
           ? null
@@ -16,8 +16,8 @@ Quote _$QuoteFromJson(Map<String, dynamic> json) => Quote(
     );
 
 Map<String, dynamic> _$QuoteToJson(Quote instance) => <String, dynamic>{
-      'id': instance.id,
-      'authorId': instance.authorId,
+      'uuid': instance.uuid,
+      'author/uuid': instance.authorId,
       'content': instance.content,
       'author': instance.author,
     };

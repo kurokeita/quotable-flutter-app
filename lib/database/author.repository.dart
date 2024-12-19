@@ -10,7 +10,7 @@ class AuthorRepository extends BaseRepository<Author> {
 
     return [
       for (final {
-            'id': id as String,
+            'uuid': uuid as String,
             'name': name as String,
             'slug': slug as String,
             'description': description as String,
@@ -18,7 +18,7 @@ class AuthorRepository extends BaseRepository<Author> {
             'link': link as String,
           } in authorMaps)
         Author(
-          id: id,
+          uuid: uuid,
           name: name,
           slug: slug,
           description: description,
@@ -40,7 +40,7 @@ class AuthorRepository extends BaseRepository<Author> {
   Future<Author?> getById(String id) async {
     final List<Map<String, Object?>> maps = await db.query(
       table,
-      where: 'id = ?',
+      where: 'uuid = ?',
       whereArgs: [id],
       limit: 1,
     );
@@ -72,8 +72,8 @@ class AuthorRepository extends BaseRepository<Author> {
     await db.update(
       table,
       model.toMap(),
-      where: 'id = ?',
-      whereArgs: [model.id],
+      where: 'uuid = ?',
+      whereArgs: [model.uuid],
     );
 
     return model;
@@ -83,8 +83,8 @@ class AuthorRepository extends BaseRepository<Author> {
   Future<bool> delete(Author model) async {
     final rowsDeleted = await db.delete(
       table,
-      where: 'id = ?',
-      whereArgs: [model.id],
+      where: 'uuid = ?',
+      whereArgs: [model.uuid],
     );
 
     return rowsDeleted != 0;

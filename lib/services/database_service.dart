@@ -17,7 +17,7 @@ class DatabaseService {
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE quotes(
-          id TEXT PRIMARY KEY,
+          uuid TEXT PRIMARY KEY,
           authorId TEXT NOT NULL,
           content TEXT NOT NULL
         )
@@ -25,7 +25,7 @@ class DatabaseService {
 
         await db.execute('''
         CREATE TABLE authors(
-          id TEXT PRIMARY KEY,
+          uuid TEXT PRIMARY KEY,
           name TEXT NOT NULL UNIQUE,
           slug TEXT NOT NULL UNIQUE,
           description TEXT,
@@ -48,5 +48,10 @@ class DatabaseService {
     final tables = await _db!
         .query('sqlite_master', where: 'type = ?', whereArgs: ['table']);
     _logger.d('Tables: $tables');
+  }
+
+  Future<void> resetDatabase() async {
+    await deleteDatabase(join(await getDatabasesPath(), 'quotable.db'));
+    await init();
   }
 }

@@ -15,7 +15,7 @@ class QuoteService {
       return null;
     }
 
-    final quoteSaved = await _repository.getById(quote.id);
+    final quoteSaved = await _repository.getById(quote.uuid);
 
     if (quoteSaved != null) {
       return QuoteOfTheDay(await _appendData(quoteSaved), true);
@@ -26,6 +26,10 @@ class QuoteService {
 
   Future<void> saveQuoteOfTheDay(Quote q) async {
     await _repository.saveQuoteOfTheDay(q);
+  }
+
+  Future<void> deleteQuoteOfTheDay() async {
+    await _repository.deleteQuoteOfTheDay();
   }
 
   Future<Quote> save(Quote quote) async {

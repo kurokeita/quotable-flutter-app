@@ -18,8 +18,8 @@ class QuoteRepository extends BaseRepository<Quote> {
 
   @override
   Future<Quote> update(Quote model) async {
-    await db
-        .update(table, model.toMap(), where: 'id = ?', whereArgs: [model.id]);
+    await db.update(table, model.toMap(),
+        where: 'uuid = ?', whereArgs: [model.uuid]);
 
     return model;
   }
@@ -27,14 +27,14 @@ class QuoteRepository extends BaseRepository<Quote> {
   @override
   Future<bool> delete(Quote model) async {
     final rowsDeleted =
-        await db.delete(table, where: 'id = ?', whereArgs: [model.id]);
+        await db.delete(table, where: 'uuid = ?', whereArgs: [model.uuid]);
     return rowsDeleted != 0;
   }
 
   @override
   Future<Quote?> getById(String id) async {
     final List<Map<String, Object?>> maps =
-        await db.query(table, where: 'id = ?', whereArgs: [id], limit: 1);
+        await db.query(table, where: 'uuid = ?', whereArgs: [id], limit: 1);
 
     if (maps.isNotEmpty) {
       return Quote.fromMap(maps.first);
@@ -71,5 +71,9 @@ class QuoteRepository extends BaseRepository<Quote> {
     return List.generate(maps.length, (i) {
       return Quote.fromMap(maps[i]);
     });
+  }
+
+  Future<void> deleteQuoteOfTheDay() async {
+    await db.delete('quote_of_the_day');
   }
 }
