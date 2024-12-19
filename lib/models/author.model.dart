@@ -5,7 +5,7 @@ part 'author.model.g.dart';
 
 @JsonSerializable()
 class Author {
-  late int id;
+  late String id;
   late String name;
   late String slug;
   late String? description;
@@ -22,7 +22,7 @@ class Author {
   });
 
   Author.fromMap(Map<String, Object?> map) {
-    id = map['id'] as int;
+    id = map['id'] as String;
     name = map['name'] as String;
     slug = map['slug'] as String;
     description = map['description'] as String;

@@ -9,7 +9,7 @@ class AuthorService {
     return await _repository.insert(author);
   }
 
-  Future<Author?> getById(int id) async {
+  Future<Author?> getById(String id) async {
     return await _repository.getById(id);
   }
 }

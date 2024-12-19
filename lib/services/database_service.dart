@@ -17,15 +17,15 @@ class DatabaseService {
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE quotes(
-          id INTEGER PRIMARY KEY,
-          authorId INTEGER NOT NULL,
+          id TEXT PRIMARY KEY,
+          authorId TEXT NOT NULL,
           content TEXT NOT NULL
         )
       ''');
 
         await db.execute('''
         CREATE TABLE authors(
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          id TEXT PRIMARY KEY,
           name TEXT NOT NULL UNIQUE,
           slug TEXT NOT NULL UNIQUE,
           description TEXT,

@@ -7,10 +7,12 @@ part of 'quote.model.dart';
 // **************************************************************************
 
 Quote _$QuoteFromJson(Map<String, dynamic> json) => Quote(
-      (json['id'] as num).toInt(),
-      (json['authorId'] as num).toInt(),
+      json['id'] as String,
+      json['authorId'] as String,
       json['content'] as String,
-      Author.fromJson(json['author'] as Map<String, dynamic>),
+      json['author'] == null
+          ? null
+          : Author.fromJson(json['author'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$QuoteToJson(Quote instance) => <String, dynamic>{

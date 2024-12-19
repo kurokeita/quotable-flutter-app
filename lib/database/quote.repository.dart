@@ -2,20 +2,17 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:stacked_app/app/app.logger.dart';
 import 'package:stacked_app/database/base.repository.dart';
 import 'package:stacked_app/models/quote.model.dart';
 
 class QuoteRepository extends BaseRepository<Quote> {
-  final _logger = getLogger('QuoteOfTheDayService');
   QuoteRepository() : super('quotes');
 
   @override
   Future<Quote> insert(Quote model) async {
-    final id = await db.insert(table, model.toMap(),
+    await db.insert(table, model.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
 
-    model.id = id;
     return model;
   }
 
@@ -35,7 +32,7 @@ class QuoteRepository extends BaseRepository<Quote> {
   }
 
   @override
-  Future<Quote?> getById(int id) async {
+  Future<Quote?> getById(String id) async {
     final List<Map<String, Object?>> maps =
         await db.query(table, where: 'id = ?', whereArgs: [id], limit: 1);
 

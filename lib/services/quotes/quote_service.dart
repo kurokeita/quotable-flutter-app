@@ -2,11 +2,9 @@ import 'package:stacked_app/app/app.locator.dart';
 import 'package:stacked_app/database/quote.repository.dart';
 import 'package:stacked_app/models/author.model.dart';
 import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/api_service.dart';
 import 'package:stacked_app/services/authors/author_service.dart';
 
 class QuoteService {
-  final _apiService = locator<ApiService>();
   final _repository = locator<QuoteRepository>();
   final _authorService = locator<AuthorService>();
 

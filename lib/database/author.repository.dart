@@ -10,7 +10,7 @@ class AuthorRepository extends BaseRepository<Author> {
 
     return [
       for (final {
-            'id': id as int,
+            'id': id as String,
             'name': name as String,
             'slug': slug as String,
             'description': description as String,
@@ -30,15 +30,14 @@ class AuthorRepository extends BaseRepository<Author> {
 
   @override
   Future<Author> insert(Author model) async {
-    final id = await db.insert(table, model.toMap(),
+    await db.insert(table, model.toMap(),
         conflictAlgorithm: ConflictAlgorithm.ignore);
 
-    model.id = id;
     return model;
   }
 
   @override
-  Future<Author?> getById(int id) async {
+  Future<Author?> getById(String id) async {
     final List<Map<String, Object?>> maps = await db.query(
       table,
       where: 'id = ?',

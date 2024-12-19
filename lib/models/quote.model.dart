@@ -5,8 +5,8 @@ part 'quote.model.g.dart';
 
 @JsonSerializable()
 class Quote {
-  late int id;
-  late int authorId;
+  late String id;
+  late String authorId;
   late String content;
   late Author? author;
 
@@ -18,8 +18,8 @@ class Quote {
   );
 
   Quote.fromMap(Map<String, Object?> map) {
-    id = map['id'] as int;
-    authorId = map['authorId'] as int;
+    id = map['id'] as String;
+    authorId = map['authorId'] as String;
     content = map['content'] as String;
   }
 

@@ -7,7 +7,7 @@ part of 'author.model.dart';
 // **************************************************************************
 
 Author _$AuthorFromJson(Map<String, dynamic> json) => Author(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       name: json['name'] as String,
       slug: json['slug'] as String,
       description: json['description'] as String?,
