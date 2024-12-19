@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_app/ui/components/layout/app_bar.dart';
 import 'package:stacked_app/ui/views/quote_of_the_day/quote_of_the_day_card.dart';
 
 import 'quote_of_the_day_viewmodel.dart';
@@ -11,9 +12,9 @@ class QuoteOfTheDayView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<QuoteOfTheDayViewModel>.nonReactive(
       builder: (context, viewModel, child) {
-        viewModel.fetchQuote();
         return Scaffold(
-            appBar: AppBar(
+            appBar: CustomAppBar(
+              context: context,
               title: const Text('Quote of the Day'),
               centerTitle: true,
             ),

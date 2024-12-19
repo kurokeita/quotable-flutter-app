@@ -14,6 +14,8 @@ import 'package:stacked_app/models/quote.model.dart' as _i3;
 import 'package:stacked_app/services/api_service.dart' as _i11;
 import 'package:stacked_app/services/authentication_service.dart' as _i9;
 import 'package:stacked_app/services/database_service.dart' as _i10;
+import 'package:stacked_app/services/preferences/preference_service.dart'
+    as _i14;
 import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart'
     as _i12;
 import 'package:stacked_app/services/quotes/quote_service.dart' as _i13;
@@ -985,4 +987,36 @@ class MockQuoteService extends _i1.Mock implements _i13.QuoteService {
         returnValue: _i7.Future<bool>.value(false),
         returnValueForMissingStub: _i7.Future<bool>.value(false),
       ) as _i7.Future<bool>);
+}
+
+/// A class which mocks [PreferenceService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPreferenceService extends _i1.Mock implements _i14.PreferenceService {
+  @override
+  bool get darkMode => (super.noSuchMethod(
+        Invocation.getter(#darkMode),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i7.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> toggleDarkMode() => (super.noSuchMethod(
+        Invocation.method(
+          #toggleDarkMode,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }

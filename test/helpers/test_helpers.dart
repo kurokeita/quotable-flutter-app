@@ -1,12 +1,14 @@
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:stacked_app/services/api_service.dart';
 import 'package:stacked_app/services/authentication_service.dart';
 import 'package:stacked_app/services/database_service.dart';
-import 'package:stacked_app/services/api_service.dart';
+import 'package:stacked_app/services/preferences/preference_service.dart';
 import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart';
 import 'package:stacked_app/services/quotes/quote_service.dart';
+import 'package:stacked_services/stacked_services.dart';
+
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -20,6 +22,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<ApiService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<QuoteOfTheDayService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<QuoteService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<PreferenceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -31,6 +34,7 @@ void registerServices() {
   getAndRegisterApiService();
   getAndRegisterQuoteOfTheDayService();
   getAndRegisterQuotesQuoteService();
+  getAndRegisterPreferenceService();
 // @stacked-mock-register
 }
 
@@ -116,6 +120,13 @@ MockQuoteService getAndRegisterQuotesQuoteService() {
   _removeRegistrationIfExists<QuoteService>();
   final service = MockQuoteService();
   locator.registerSingleton<QuoteService>(service);
+  return service;
+}
+
+MockPreferenceService getAndRegisterPreferenceService() {
+  _removeRegistrationIfExists<PreferenceService>();
+  final service = MockPreferenceService();
+  locator.registerSingleton<PreferenceService>(service);
   return service;
 }
 // @stacked-mock-create
