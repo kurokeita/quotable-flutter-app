@@ -1,6 +1,5 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/app/app.logger.dart';
 import 'package:stacked_app/models/quote.model.dart';
 import 'package:stacked_app/services/api_service.dart';
 import 'package:stacked_app/services/quotes/quote_service.dart';
@@ -8,7 +7,6 @@ import 'package:stacked_app/services/quotes/quote_service.dart';
 class QuoteOfTheDayService with ListenableServiceMixin {
   final _apiService = locator<ApiService>();
   final _quoteService = locator<QuoteService>();
-  final _logger = getLogger('QuoteOfTheDayService');
 
   Quote? _quote;
 
@@ -23,20 +21,28 @@ class QuoteOfTheDayService with ListenableServiceMixin {
   }
 
   Future<void> fetchQuote() async {
-    final q = await _quoteService.getQuoteOfTheDay();
-
-    _logger.d(q);
+    final q = await fetchFromDb();
 
     if (q == null) {
-      final newQuote = await _apiService.fetchRandomQuote();
-      await _quoteService.saveQuoteOfTheDay(newQuote);
-      _isFavorite = false;
-    } else {
-      _quote = q.quote;
-      _isFavorite = q.isSaved;
+      await fetchFromApi();
+      return;
     }
 
-    _logger.d(_isFavorite);
+    _quote = q.quote;
+    _isFavorite = q.isSaved;
+
+    notifyListeners();
+  }
+
+  Future<QuoteOfTheDay?> fetchFromDb() async {
+    return await _quoteService.getQuoteOfTheDay();
+  }
+
+  Future<void> fetchFromApi() async {
+    final newQuote = await _apiService.fetchRandomQuote();
+    await _quoteService.saveQuoteOfTheDay(newQuote);
+    _quote = newQuote;
+    _isFavorite = false;
 
     notifyListeners();
   }
@@ -55,5 +61,10 @@ class QuoteOfTheDayService with ListenableServiceMixin {
     }
 
     notifyListeners();
+  }
+
+  Future<void> refresh() async {
+    await _quoteService.deleteQuoteOfTheDay();
+    await fetchFromApi();
   }
 }
