@@ -1,25 +1,27 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stacked_app/helpers/nested_json_key.dart';
 import 'package:stacked_app/models/author.model.dart';
 
 part 'quote.model.g.dart';
 
 @JsonSerializable()
 class Quote {
-  late int id;
-  late int authorId;
+  late String uuid;
+  @NestedJsonKey(name: 'author/uuid')
+  late String authorId;
   late String content;
   late Author? author;
 
   Quote(
-    this.id,
+    this.uuid,
     this.authorId,
     this.content,
     this.author,
   );
 
   Quote.fromMap(Map<String, Object?> map) {
-    id = map['id'] as int;
-    authorId = map['authorId'] as int;
+    uuid = map['uuid'] as String;
+    authorId = map['authorId'] as String;
     content = map['content'] as String;
   }
 
@@ -27,7 +29,7 @@ class Quote {
 
   Map<String, Object?> toMap() {
     return {
-      'id': id,
+      'uuid': uuid,
       'authorId': authorId,
       'content': content,
     };
@@ -37,7 +39,7 @@ class Quote {
 
   @override
   String toString() {
-    return 'Quote(id: $id, authorId: $authorId, content: $content, author: ${author.toString()})';
+    return 'Quote(uuid: $uuid, authorId: $authorId, content: $content, author: ${author.toString()})';
   }
 }
 

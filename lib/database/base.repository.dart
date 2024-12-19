@@ -13,5 +13,5 @@ abstract class BaseRepository<T> {
   Future<T> insert(T model);
   Future<T> update(T model);
   Future<bool> delete(T model);
-  Future<T?> getById(int id);
+  Future<T?> getById(String id);
 }

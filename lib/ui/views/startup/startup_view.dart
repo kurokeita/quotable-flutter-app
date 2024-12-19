@@ -32,7 +32,6 @@ class StartupView extends StackedView<StartupViewModel> {
                   width: 16,
                   height: 16,
                   child: CircularProgressIndicator(
-                    color: Colors.black,
                     strokeWidth: 6,
                   ),
                 )

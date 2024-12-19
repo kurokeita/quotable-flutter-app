@@ -1,13 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:stacked_app/app/app.logger.dart';
 import 'package:stacked_app/models/quote.model.dart';
 
 class ApiService {
   final _client = http.Client();
   final _baseUrl = 'https://quotable.kurokeita.dev';
-  final _logger = getLogger('ApiService');
 
   Future<Quote> fetchRandomQuote() async {
     final endpoint = '$_baseUrl/api/quotes/random';
