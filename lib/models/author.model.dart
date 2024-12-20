@@ -5,7 +5,7 @@ part 'author.model.g.dart';
 
 @JsonSerializable()
 class Author {
-  late int id;
+  late String uuid;
   late String name;
   late String slug;
   late String? description;
@@ -13,7 +13,7 @@ class Author {
   late String? link;
 
   Author({
-    required this.id,
+    required this.uuid,
     required this.name,
     required this.slug,
     this.description,
@@ -22,7 +22,7 @@ class Author {
   });
 
   Author.fromMap(Map<String, Object?> map) {
-    id = map['id'] as int;
+    uuid = map['uuid'] as String;
     name = map['name'] as String;
     slug = map['slug'] as String;
     description = map['description'] as String;
@@ -34,7 +34,7 @@ class Author {
 
   Map<String, Object?> toMap() {
     return {
-      'id': id,
+      'uuid': uuid,
       'name': name,
       'slug': slug,
       'description': description,
@@ -47,7 +47,7 @@ class Author {
 
   @override
   String toString() {
-    return 'Author(id: $id, name: $name, slug: $slug, description: $description, bio: $bio, link: $link)';
+    return 'Author(uuid: $uuid, name: $name, slug: $slug, description: $description, bio: $bio, link: $link)';
   }
 
   static String getSlug(String name) => slugify(name);

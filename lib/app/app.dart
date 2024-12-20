@@ -5,6 +5,7 @@ import 'package:stacked_app/services/api_service.dart';
 import 'package:stacked_app/services/authentication_service.dart';
 import 'package:stacked_app/services/authors/author_service.dart';
 import 'package:stacked_app/services/database_service.dart';
+import 'package:stacked_app/services/preferences/preference_service.dart';
 import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart';
 import 'package:stacked_app/services/quotes/quote_service.dart';
 import 'package:stacked_app/ui/bottom_sheets/notice/notice_sheet.dart';
@@ -36,6 +37,7 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: QuoteOfTheDayService),
     LazySingleton(classType: QuoteService),
     LazySingleton(classType: AuthorService),
+    LazySingleton(classType: PreferenceService),
 // @stacked-service
   ],
   bottomsheets: [

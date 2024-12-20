@@ -14,14 +14,16 @@ class QuoteOfTheDayViewModel extends ReactiveViewModel {
       [_quoteOfTheDayService];
 
   Future<void> fetchQuote() async {
-    setBusy(true);
-
+    setBusyForObject(quote, true);
     await _quoteOfTheDayService.fetchQuote();
-
-    setBusy(false);
+    setBusyForObject(quote, false);
   }
 
   Future<void> toggleFavorite() async {
     await _quoteOfTheDayService.toggleFavorite();
+  }
+
+  Future<void> refresh() async {
+    await _quoteOfTheDayService.refresh();
   }
 }

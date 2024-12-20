@@ -2,11 +2,9 @@ import 'package:stacked_app/app/app.locator.dart';
 import 'package:stacked_app/database/quote.repository.dart';
 import 'package:stacked_app/models/author.model.dart';
 import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/api_service.dart';
 import 'package:stacked_app/services/authors/author_service.dart';
 
 class QuoteService {
-  final _apiService = locator<ApiService>();
   final _repository = locator<QuoteRepository>();
   final _authorService = locator<AuthorService>();
 
@@ -17,7 +15,7 @@ class QuoteService {
       return null;
     }
 
-    final quoteSaved = await _repository.getById(quote.id);
+    final quoteSaved = await _repository.getById(quote.uuid);
 
     if (quoteSaved != null) {
       return QuoteOfTheDay(await _appendData(quoteSaved), true);
@@ -28,6 +26,10 @@ class QuoteService {
 
   Future<void> saveQuoteOfTheDay(Quote q) async {
     await _repository.saveQuoteOfTheDay(q);
+  }
+
+  Future<void> deleteQuoteOfTheDay() async {
+    await _repository.deleteQuoteOfTheDay();
   }
 
   Future<Quote> save(Quote quote) async {

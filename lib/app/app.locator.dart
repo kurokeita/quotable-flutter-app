@@ -17,6 +17,7 @@ import '../services/api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/authors/author_service.dart';
 import '../services/database_service.dart';
+import '../services/preferences/preference_service.dart';
 import '../services/quotes/quote_of_the_day_service.dart';
 import '../services/quotes/quote_service.dart';
 
@@ -42,4 +43,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => QuoteOfTheDayService());
   locator.registerLazySingleton(() => QuoteService());
   locator.registerLazySingleton(() => AuthorService());
+  locator.registerLazySingleton(() => PreferenceService());
 }

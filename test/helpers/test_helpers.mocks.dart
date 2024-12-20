@@ -14,6 +14,8 @@ import 'package:stacked_app/models/quote.model.dart' as _i3;
 import 'package:stacked_app/services/api_service.dart' as _i11;
 import 'package:stacked_app/services/authentication_service.dart' as _i9;
 import 'package:stacked_app/services/database_service.dart' as _i10;
+import 'package:stacked_app/services/preferences/preference_service.dart'
+    as _i14;
 import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart'
     as _i12;
 import 'package:stacked_app/services/quotes/quote_service.dart' as _i13;
@@ -763,6 +765,16 @@ class MockDatabaseService extends _i1.Mock implements _i10.DatabaseService {
         returnValue: _i7.Future<void>.value(),
         returnValueForMissingStub: _i7.Future<void>.value(),
       ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> resetDatabase() => (super.noSuchMethod(
+        Invocation.method(
+          #resetDatabase,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }
 
 /// A class which mocks [ApiService].
@@ -833,6 +845,46 @@ class MockQuoteOfTheDayService extends _i1.Mock
       ) as _i7.Future<void>);
 
   @override
+  _i7.Future<_i3.QuoteOfTheDay?> fetchFromDb() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchFromDb,
+          [],
+        ),
+        returnValue: _i7.Future<_i3.QuoteOfTheDay?>.value(),
+        returnValueForMissingStub: _i7.Future<_i3.QuoteOfTheDay?>.value(),
+      ) as _i7.Future<_i3.QuoteOfTheDay?>);
+
+  @override
+  _i7.Future<void> fetchFromApi() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchFromApi,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> toggleFavorite() => (super.noSuchMethod(
+        Invocation.method(
+          #toggleFavorite,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> refresh() => (super.noSuchMethod(
+        Invocation.method(
+          #refresh,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
   void listenToReactiveValues(List<dynamic>? reactiveValues) =>
       super.noSuchMethod(
         Invocation.method(
@@ -885,6 +937,26 @@ class MockQuoteService extends _i1.Mock implements _i13.QuoteService {
       ) as _i7.Future<_i3.QuoteOfTheDay?>);
 
   @override
+  _i7.Future<void> saveQuoteOfTheDay(_i3.Quote? q) => (super.noSuchMethod(
+        Invocation.method(
+          #saveQuoteOfTheDay,
+          [q],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> deleteQuoteOfTheDay() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteQuoteOfTheDay,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
   _i7.Future<_i3.Quote> save(_i3.Quote? quote) => (super.noSuchMethod(
         Invocation.method(
           #save,
@@ -907,10 +979,42 @@ class MockQuoteService extends _i1.Mock implements _i13.QuoteService {
       ) as _i7.Future<_i3.Quote>);
 
   @override
-  _i7.Future<void> saveQuoteOfTheDay(_i3.Quote? q) => (super.noSuchMethod(
+  _i7.Future<bool> delete(_i3.Quote? quote) => (super.noSuchMethod(
         Invocation.method(
-          #saveQuoteOfTheDay,
-          [q],
+          #delete,
+          [quote],
+        ),
+        returnValue: _i7.Future<bool>.value(false),
+        returnValueForMissingStub: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
+}
+
+/// A class which mocks [PreferenceService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPreferenceService extends _i1.Mock implements _i14.PreferenceService {
+  @override
+  bool get darkMode => (super.noSuchMethod(
+        Invocation.getter(#darkMode),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i7.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> toggleDarkMode() => (super.noSuchMethod(
+        Invocation.method(
+          #toggleDarkMode,
+          [],
         ),
         returnValue: _i7.Future<void>.value(),
         returnValueForMissingStub: _i7.Future<void>.value(),

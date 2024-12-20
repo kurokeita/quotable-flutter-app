@@ -22,7 +22,10 @@ class QuoteCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(quote.content),
+            title: Text(
+              quote.content,
+              textAlign: TextAlign.center,
+            ),
             subtitle: GestureDetector(
               onTap: () => _showAuthorBio(context, quote),
               child: Text(
