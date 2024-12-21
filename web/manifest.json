@@ -1,6 +1,6 @@
 {
-    "name": "stacked_app",
-    "short_name": "stacked_app",
+    "name": "quotable",
+    "short_name": "quotable",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

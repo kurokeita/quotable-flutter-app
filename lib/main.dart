@@ -1,11 +1,11 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked_app/app/app.bottomsheets.dart';
-import 'package:stacked_app/app/app.dialogs.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/app/app.router.dart';
-import 'package:stacked_app/services/database_service.dart';
-import 'package:stacked_app/services/preferences/preference_service.dart';
+import 'package:quotable/app/app.bottomsheets.dart';
+import 'package:quotable/app/app.dialogs.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/app/app.router.dart';
+import 'package:quotable/services/database_service.dart';
+import 'package:quotable/services/preferences/preference_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {

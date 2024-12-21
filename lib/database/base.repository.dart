@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/services/database_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/services/database_service.dart';
 
 abstract class BaseRepository<T> {
   final _db = locator<DatabaseService>().db;

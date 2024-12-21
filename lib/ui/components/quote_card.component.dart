@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';
-import 'package:stacked_app/models/quote.model.dart';
+import 'package:quotable/models/quote.model.dart';
 
 class QuoteCard extends StatelessWidget {
   final Quote quote;

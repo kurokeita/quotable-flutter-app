@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:stacked_app/app/app.logger.dart';
+import 'package:quotable/app/app.logger.dart';
 
 class DatabaseService {
   final _logger = getLogger('DB Service');

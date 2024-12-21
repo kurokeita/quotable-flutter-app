@@ -1,8 +1,8 @@
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/database/quote.repository.dart';
-import 'package:stacked_app/models/author.model.dart';
-import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/authors/author_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/database/quote.repository.dart';
+import 'package:quotable/models/author.model.dart';
+import 'package:quotable/models/quote.model.dart';
+import 'package:quotable/services/authors/author_service.dart';
 
 class QuoteService {
   final _repository = locator<QuoteRepository>();

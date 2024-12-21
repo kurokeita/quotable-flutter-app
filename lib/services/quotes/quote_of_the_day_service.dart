@@ -1,8 +1,8 @@
 import 'package:stacked/stacked.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/api_service.dart';
-import 'package:stacked_app/services/quotes/quote_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/models/quote.model.dart';
+import 'package:quotable/services/api_service.dart';
+import 'package:quotable/services/quotes/quote_service.dart';
 
 class QuoteOfTheDayService with ListenableServiceMixin {
   final _apiService = locator<ApiService>();
