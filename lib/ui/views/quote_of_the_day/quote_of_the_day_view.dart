@@ -13,9 +13,8 @@ class QuoteOfTheDayView extends StatelessWidget {
     return ViewModelBuilder<QuoteOfTheDayViewModel>.nonReactive(
       builder: (context, viewModel, child) {
         return Scaffold(
-            appBar: CustomAppBar(
-              context: context,
-              title: const Text('Quote of the Day'),
+            appBar: const CustomAppBar(
+              title: Text('Quote of the Day'),
               centerTitle: true,
             ),
             backgroundColor: Theme.of(context).colorScheme.surface,

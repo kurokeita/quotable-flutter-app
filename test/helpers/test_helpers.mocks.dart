@@ -994,26 +994,9 @@ class MockQuoteService extends _i1.Mock implements _i13.QuoteService {
 /// See the documentation for Mockito's code generation for more information.
 class MockPreferenceService extends _i1.Mock implements _i14.PreferenceService {
   @override
-  bool get darkMode => (super.noSuchMethod(
-        Invocation.getter(#darkMode),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-
-  @override
   _i7.Future<void> init() => (super.noSuchMethod(
         Invocation.method(
           #init,
-          [],
-        ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
-
-  @override
-  _i7.Future<void> toggleDarkMode() => (super.noSuchMethod(
-        Invocation.method(
-          #toggleDarkMode,
           [],
         ),
         returnValue: _i7.Future<void>.value(),
