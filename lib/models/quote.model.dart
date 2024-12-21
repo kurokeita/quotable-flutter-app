@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stacked_app/helpers/nested_json_key.dart';
-import 'package:stacked_app/models/author.model.dart';
+import 'package:quotable/helpers/nested_json_key.dart';
+import 'package:quotable/models/author.model.dart';
 
 part 'quote.model.g.dart';
 

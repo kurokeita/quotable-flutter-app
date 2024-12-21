@@ -7,12 +7,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i6;
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_app/ui/views/home/home_view.dart' as _i2;
-import 'package:stacked_app/ui/views/quote_list/quote_list_view.dart' as _i4;
-import 'package:stacked_app/ui/views/quote_of_the_day/quote_of_the_day_view.dart'
+import 'package:quotable/ui/views/home/home_view.dart' as _i2;
+import 'package:quotable/ui/views/quote_list/quote_list_view.dart' as _i4;
+import 'package:quotable/ui/views/quote_of_the_day/quote_of_the_day_view.dart'
     as _i5;
-import 'package:stacked_app/ui/views/startup/startup_view.dart' as _i3;
+import 'package:quotable/ui/views/startup/startup_view.dart' as _i3;
+import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i7;
 
 class Routes {

@@ -1,12 +1,12 @@
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/services/api_service.dart';
-import 'package:stacked_app/services/authentication_service.dart';
-import 'package:stacked_app/services/database_service.dart';
-import 'package:stacked_app/services/preferences/preference_service.dart';
-import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart';
-import 'package:stacked_app/services/quotes/quote_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/services/api_service.dart';
+import 'package:quotable/services/authentication_service.dart';
+import 'package:quotable/services/database_service.dart';
+import 'package:quotable/services/preferences/preference_service.dart';
+import 'package:quotable/services/quotes/quote_of_the_day_service.dart';
+import 'package:quotable/services/quotes/quote_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 // @stacked-import

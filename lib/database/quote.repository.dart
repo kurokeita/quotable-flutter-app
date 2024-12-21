@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:stacked_app/database/base.repository.dart';
-import 'package:stacked_app/models/quote.model.dart';
+import 'package:quotable/database/base.repository.dart';
+import 'package:quotable/models/quote.model.dart';
 
 class QuoteRepository extends BaseRepository<Quote> {
   QuoteRepository() : super('quotes');

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_app/ui/common/app_colors.dart';
-import 'package:stacked_app/ui/common/ui_helpers.dart';
+import 'package:quotable/ui/common/app_colors.dart';
+import 'package:quotable/ui/common/ui_helpers.dart';
 
 import 'quote_list_viewmodel.dart';
 

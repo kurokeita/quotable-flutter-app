@@ -1,11 +1,11 @@
 import 'package:stacked/stacked.dart';
-import 'package:stacked_app/app/app.bottomsheets.dart';
-import 'package:stacked_app/app/app.dialogs.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/api_service.dart';
-import 'package:stacked_app/services/database_service.dart';
-import 'package:stacked_app/ui/common/app_strings.dart';
+import 'package:quotable/app/app.bottomsheets.dart';
+import 'package:quotable/app/app.dialogs.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/models/quote.model.dart';
+import 'package:quotable/services/api_service.dart';
+import 'package:quotable/services/database_service.dart';
+import 'package:quotable/ui/common/app_strings.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class QuoteListViewModel extends BaseViewModel {

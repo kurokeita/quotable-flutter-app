@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:stacked_app/models/quote.model.dart';
+import 'package:quotable/models/quote.model.dart';
 
 class ApiService {
   final _client = http.Client();

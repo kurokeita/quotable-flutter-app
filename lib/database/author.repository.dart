@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:stacked_app/database/base.repository.dart';
-import 'package:stacked_app/models/author.model.dart';
+import 'package:quotable/database/base.repository.dart';
+import 'package:quotable/models/author.model.dart';
 
 class AuthorRepository extends BaseRepository<Author> {
   AuthorRepository() : super('authors');

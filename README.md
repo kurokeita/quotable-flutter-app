@@ -1,3 +1,3 @@
-# stacked_app
+# quotable
 
 A new Flutter project.

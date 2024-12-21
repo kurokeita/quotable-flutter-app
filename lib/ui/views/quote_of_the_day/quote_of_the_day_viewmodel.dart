@@ -1,7 +1,7 @@
 import 'package:stacked/stacked.dart';
-import 'package:stacked_app/app/app.locator.dart';
-import 'package:stacked_app/models/quote.model.dart';
-import 'package:stacked_app/services/quotes/quote_of_the_day_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/models/quote.model.dart';
+import 'package:quotable/services/quotes/quote_of_the_day_service.dart';
 
 class QuoteOfTheDayViewModel extends ReactiveViewModel {
   final _quoteOfTheDayService = locator<QuoteOfTheDayService>();
