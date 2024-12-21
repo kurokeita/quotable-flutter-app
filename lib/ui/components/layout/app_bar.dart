@@ -1,17 +1,11 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:stacked_app/services/preferences/app_theme_service.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final bool centerTitle;
-  final BuildContext context;
 
-  const CustomAppBar(
-      {Key? key,
-      required this.context,
-      required this.title,
-      this.centerTitle = false})
+  const CustomAppBar({Key? key, required this.title, this.centerTitle = false})
       : super(key: key);
 
   @override
@@ -19,20 +13,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-        builder: (context, _, __) => AppBar(
-              title: title,
-              centerTitle: centerTitle,
-              actions: [
-                IconButton(
-                  icon: context.watch<AppThemeService>().isDarkTheme
-                      ? const Icon(Icons.dark_mode)
-                      : const Icon(Icons.light_mode),
-                  onPressed: () async =>
-                      Provider.of<AppThemeService>(context, listen: false)
-                          .toggleTheme(),
-                )
-              ],
-            ));
+    return  ValueListenableBuilder(
+        valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
+        builder: (context, mode, child) => AppBar(
+          title: title,
+          centerTitle: centerTitle,
+          actions: [
+            IconButton(
+              icon: AdaptiveTheme.of(context).brightness  == Brightness.dark
+                  ? const Icon(Icons.light_mode)
+                  : const Icon(Icons.dark_mode),
+              onPressed: () =>
+                  AdaptiveTheme.of(context).toggleThemeMode(useSystem: false),
+            )
+          ],
+        ));
   }
 }
