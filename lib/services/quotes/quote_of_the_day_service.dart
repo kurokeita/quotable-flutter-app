@@ -39,8 +39,6 @@ class QuoteOfTheDayService with ListenableServiceMixin {
     _quote!.quote = newQuote;
     _quote!.isSaved = false;
 
-    await Future.delayed(const Duration(seconds: 3));
-
     notifyListeners();
   }
 
