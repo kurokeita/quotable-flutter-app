@@ -21,13 +21,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               centerTitle: centerTitle,
               actions: [
                 IconButton(
-                  icon: PreferenceService.getCurrentTheme(context) ==
-                          ThemeData.dark()
-                      ? const Icon(Icons.light_mode)
-                      : const Icon(Icons.dark_mode),
+                  icon: _getIcon(context),
                   onPressed: () => PreferenceService.toggleThemeMode(context),
                 )
               ],
             ));
+  }
+
+  Icon _getIcon(BuildContext ctx) {
+    final currentMode = PreferenceService.getCurrentMode(ctx);
+    switch (currentMode) {
+      case AdaptiveThemeMode.light:
+        return const Icon(Icons.light_mode);
+      case AdaptiveThemeMode.dark:
+        return const Icon(Icons.dark_mode);
+      default:
+        return const Icon(Icons.auto_mode_rounded);
+    }
   }
 }

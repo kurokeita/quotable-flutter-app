@@ -9,20 +9,11 @@ class PreferenceService {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  static ThemeData getCurrentTheme(BuildContext context) {
-    return AdaptiveTheme.of(context).brightness == Brightness.dark
-        ? ThemeData.dark()
-        : ThemeData.light();
+  static AdaptiveThemeMode getCurrentMode(BuildContext context) {
+    return AdaptiveTheme.of(context).mode;
   }
 
   static void toggleThemeMode(BuildContext context) {
-    if (PreferenceService.getCurrentTheme(context).brightness ==
-        Brightness.dark) {
-      AdaptiveTheme.of(context).setLight();
-
-      return;
-    }
-
-    AdaptiveTheme.of(context).setDark();
+    AdaptiveTheme.of(context).toggleThemeMode();
   }
 }
