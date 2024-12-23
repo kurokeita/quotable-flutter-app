@@ -819,13 +819,6 @@ class MockApiService extends _i1.Mock implements _i11.ApiService {
 class MockQuoteOfTheDayService extends _i1.Mock
     implements _i12.QuoteOfTheDayService {
   @override
-  bool get isFavorite => (super.noSuchMethod(
-        Invocation.getter(#isFavorite),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-
-  @override
   int get listenersCount => (super.noSuchMethod(
         Invocation.getter(#listenersCount),
         returnValue: 0,
