@@ -20,8 +20,7 @@ class QuoteOfTheDayService with ListenableServiceMixin {
     final q = await fetchFromDb();
 
     if (q == null) {
-      await fetchFromApi();
-      return;
+      return await fetchFromApi();
     }
 
     _quote = q;
@@ -36,8 +35,8 @@ class QuoteOfTheDayService with ListenableServiceMixin {
   Future<void> fetchFromApi() async {
     final newQuote = await _apiService.fetchRandomQuote();
     await _quoteService.saveQuoteOfTheDay(newQuote);
-    _quote!.quote = newQuote;
-    _quote!.isSaved = false;
+
+    _quote = QuoteOfTheDay(quote: newQuote, isSaved: false);
 
     notifyListeners();
   }
