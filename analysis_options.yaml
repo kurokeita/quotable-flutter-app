@@ -1,1 +1,4 @@
 include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude: [lib/app/app.**.dart, lib/models/*.g.dart]
