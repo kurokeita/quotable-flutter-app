@@ -1,13 +1,12 @@
-import 'package:stacked/stacked.dart';
 import 'package:quotable/app/app.locator.dart';
 import 'package:quotable/models/quote.model.dart';
 import 'package:quotable/services/quotes/quote_of_the_day_service.dart';
+import 'package:stacked/stacked.dart';
 
 class QuoteOfTheDayViewModel extends ReactiveViewModel {
   final _quoteOfTheDayService = locator<QuoteOfTheDayService>();
 
-  Quote? get quote => _quoteOfTheDayService.quote;
-  bool get isFavorite => _quoteOfTheDayService.isFavorite;
+  QuoteOfTheDay? get quote => _quoteOfTheDayService.quote;
 
   @override
   List<ListenableServiceMixin> get listenableServices =>
@@ -24,6 +23,8 @@ class QuoteOfTheDayViewModel extends ReactiveViewModel {
   }
 
   Future<void> refresh() async {
+    setBusyForObject(quote, true);
     await _quoteOfTheDayService.refresh();
+    setBusyForObject(quote, false);
   }
 }
