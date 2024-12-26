@@ -6,7 +6,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
 
 class QuoteOfTheDayCard extends StackedHookView<QuoteOfTheDayViewModel> {
-  const QuoteOfTheDayCard({Key? key}) : super(key: key, reactive: true);
+  const QuoteOfTheDayCard({super.key}) : super(reactive: true);
 
   @override
   Widget builder(

@@ -8,11 +8,10 @@ class QuoteCard extends StatelessWidget {
   final VoidCallback onPressed;
 
   const QuoteCard(
-      {Key? key,
+      {super.key,
       required this.quote,
       required this.isFavorite,
-      required this.onPressed})
-      : super(key: key);
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) => Card(
@@ -38,7 +37,10 @@ class QuoteCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: onPressed,
+                  onPressed: () => {
+                        onPressed,
+                        // context.showToast(msg: isFavorite ? 'Removed' : 'Saved')
+                      },
                   color: isFavorite ? Colors.red : null,
                   icon: Icon(isFavorite
                       ? Icons.favorite_rounded

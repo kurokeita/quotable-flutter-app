@@ -8,11 +8,10 @@ class QuoteTile extends StatelessWidget {
   final VoidCallback onPressed;
 
   const QuoteTile(
-      {Key? key,
+      {super.key,
       required this.quote,
       required this.isFavorite,
-      required this.onPressed})
-      : super(key: key);
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) => Card(

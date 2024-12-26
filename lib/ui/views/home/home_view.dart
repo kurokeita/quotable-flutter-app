@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:quotable/ui/common/app_colors.dart';
 import 'package:quotable/ui/common/ui_helpers.dart';
+import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget builder(

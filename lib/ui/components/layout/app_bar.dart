@@ -6,8 +6,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final bool centerTitle;
 
-  const CustomAppBar({Key? key, required this.title, this.centerTitle = false})
-      : super(key: key);
+  const CustomAppBar(
+      {super.key, required this.title, this.centerTitle = false});
 
   @override
   Size get preferredSize => Size.copy(AppBar().preferredSize);
