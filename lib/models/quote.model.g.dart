@@ -7,12 +7,15 @@ part of 'quote.model.dart';
 // **************************************************************************
 
 Quote _$QuoteFromJson(Map<String, dynamic> json) => Quote(
-      json['uuid'] as String,
-      nestedReader(json, 'author/uuid') as String,
-      json['content'] as String,
-      json['author'] == null
+      uuid: json['uuid'] as String,
+      authorId: nestedReader(json, 'author/uuid') as String,
+      content: json['content'] as String,
+      author: json['author'] == null
           ? null
           : Author.fromJson(json['author'] as Map<String, dynamic>),
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$QuoteToJson(Quote instance) => <String, dynamic>{
@@ -20,4 +23,5 @@ Map<String, dynamic> _$QuoteToJson(Quote instance) => <String, dynamic>{
       'author/uuid': instance.authorId,
       'content': instance.content,
       'author': instance.author,
+      'createdAt': instance.createdAt?.toIso8601String(),
     };

@@ -1,4 +1,3 @@
-import 'package:stacked/stacked_annotations.dart';
 import 'package:quotable/database/author.repository.dart';
 import 'package:quotable/database/quote.repository.dart';
 import 'package:quotable/services/api_service.dart';
@@ -42,6 +41,7 @@ import 'package:stacked_services/stacked_services.dart';
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
+    StackedBottomsheet(classType: QuotesListSheet),
     // @stacked-bottom-sheet
   ],
   dialogs: [
