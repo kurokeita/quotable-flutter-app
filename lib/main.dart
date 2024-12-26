@@ -4,8 +4,6 @@ import 'package:quotable/app/app.bottomsheets.dart';
 import 'package:quotable/app/app.dialogs.dart';
 import 'package:quotable/app/app.locator.dart';
 import 'package:quotable/app/app.router.dart';
-import 'package:quotable/services/database_service.dart';
-import 'package:quotable/services/preferences/preference_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
@@ -13,8 +11,6 @@ Future<void> main() async {
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
-  await locator<DatabaseService>().init();
-  await locator<PreferenceService>().init();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   runApp(MainApp(savedThemeMode: savedThemeMode));
 }

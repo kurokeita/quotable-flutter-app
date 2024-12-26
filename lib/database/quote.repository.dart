@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:quotable/database/base.repository.dart';
 import 'package:quotable/models/quote.model.dart';
+import 'package:sqflite/sqflite.dart';
 
 class QuoteRepository extends BaseRepository<Quote> {
   QuoteRepository() : super('quotes');
@@ -66,7 +66,8 @@ class QuoteRepository extends BaseRepository<Quote> {
   }
 
   Future<List<Quote>> getAll() async {
-    final List<Map<String, Object?>> maps = await db.query(table);
+    final List<Map<String, Object?>> maps =
+        await db.query(table, orderBy: 'createdAt DESC');
 
     return List.generate(maps.length, (i) {
       return Quote.fromMap(maps[i]);
@@ -75,5 +76,12 @@ class QuoteRepository extends BaseRepository<Quote> {
 
   Future<void> deleteQuoteOfTheDay() async {
     await db.delete('quote_of_the_day');
+  }
+
+  Future<bool> isSaved(Quote quote) async {
+    final List<Map<String, Object?>> maps = await db.query(table,
+        where: 'uuid = ?', whereArgs: [quote.uuid], limit: 1);
+
+    return maps.isNotEmpty;
   }
 }

@@ -1,6 +1,6 @@
-import 'package:sqflite/sqflite.dart';
 import 'package:quotable/database/base.repository.dart';
 import 'package:quotable/models/author.model.dart';
+import 'package:sqflite/sqflite.dart';
 
 class AuthorRepository extends BaseRepository<Author> {
   AuthorRepository() : super('authors');
@@ -88,5 +88,29 @@ class AuthorRepository extends BaseRepository<Author> {
     );
 
     return rowsDeleted != 0;
+  }
+
+  Future<List<Author>> getByIds(List<String> ids) async {
+    final List<Map<String, Object?>> authorMaps = await db.query(table,
+        where: 'uuid IN (${ids.map((id) => '?').join(',')})', whereArgs: ids);
+
+    return [
+      for (final {
+            'uuid': uuid as String,
+            'name': name as String,
+            'slug': slug as String,
+            'description': description as String,
+            'bio': bio as String,
+            'link': link as String,
+          } in authorMaps)
+        Author(
+          uuid: uuid,
+          name: name,
+          slug: slug,
+          description: description,
+          bio: bio,
+          link: link,
+        ),
+    ];
   }
 }

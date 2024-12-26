@@ -72,8 +72,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i5.QuoteOfTheDayView: (data) {
+      final args = data.getArgs<QuoteOfTheDayViewArguments>(
+        orElse: () => const QuoteOfTheDayViewArguments(),
+      );
       return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.QuoteOfTheDayView(),
+        builder: (context) => _i5.QuoteOfTheDayView(key: args.key),
         settings: data,
       );
     },
@@ -84,6 +87,28 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class QuoteOfTheDayViewArguments {
+  const QuoteOfTheDayViewArguments({this.key});
+
+  final _i6.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant QuoteOfTheDayViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
 }
 
 extension NavigatorStateExtension on _i7.NavigationService {
@@ -129,14 +154,16 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToQuoteOfTheDayView([
+  Future<dynamic> navigateToQuoteOfTheDayView({
+    _i6.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.quoteOfTheDayView,
+        arguments: QuoteOfTheDayViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -185,14 +212,16 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithQuoteOfTheDayView([
+  Future<dynamic> replaceWithQuoteOfTheDayView({
+    _i6.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.quoteOfTheDayView,
+        arguments: QuoteOfTheDayViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -18,7 +18,6 @@ import '../services/authentication_service.dart';
 import '../services/authors/author_service.dart';
 import '../services/database_service.dart';
 import '../services/preferences/preference_service.dart';
-import '../services/quotes/quote_of_the_day_service.dart';
 import '../services/quotes/quote_service.dart';
 
 final locator = StackedLocator.instance;
@@ -32,16 +31,21 @@ Future<void> setupLocator({
       environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
+  final databaseService = DatabaseService();
+  await databaseService.init();
+  locator.registerSingleton(databaseService);
+
+  final preferenceService = PreferenceService();
+  await preferenceService.init();
+  locator.registerSingleton(preferenceService);
+
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => AuthenticationService());
-  locator.registerLazySingleton(() => DatabaseService());
   locator.registerLazySingleton(() => QuoteRepository());
   locator.registerLazySingleton(() => AuthorRepository());
   locator.registerLazySingleton(() => ApiService());
-  locator.registerLazySingleton(() => QuoteOfTheDayService());
   locator.registerLazySingleton(() => QuoteService());
   locator.registerLazySingleton(() => AuthorService());
-  locator.registerLazySingleton(() => PreferenceService());
 }
