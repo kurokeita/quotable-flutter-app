@@ -11,6 +11,7 @@ class Author {
   late String? description;
   late String? bio;
   late String? link;
+  late DateTime? createdAt;
 
   Author({
     required this.uuid,
@@ -19,6 +20,7 @@ class Author {
     this.description,
     this.bio,
     this.link,
+    this.createdAt,
   });
 
   Author.fromMap(Map<String, Object?> map) {
@@ -28,6 +30,7 @@ class Author {
     description = map['description'] as String;
     bio = map['bio'] as String;
     link = map['link'] as String;
+    createdAt = DateTime.parse(map['createdAt'] as String);
   }
 
   factory Author.fromJson(Map<String, dynamic> json) => _$AuthorFromJson(json);

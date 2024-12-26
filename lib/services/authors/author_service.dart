@@ -12,4 +12,8 @@ class AuthorService {
   Future<Author?> getById(String id) async {
     return await _repository.getById(id);
   }
+
+  Future<List<Author>> getByIds(List<String> ids) async {
+    return await _repository.getByIds(ids);
+  }
 }

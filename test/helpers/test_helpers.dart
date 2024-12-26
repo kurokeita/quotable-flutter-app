@@ -5,7 +5,6 @@ import 'package:quotable/services/api_service.dart';
 import 'package:quotable/services/authentication_service.dart';
 import 'package:quotable/services/database_service.dart';
 import 'package:quotable/services/preferences/preference_service.dart';
-import 'package:quotable/services/quotes/quote_of_the_day_service.dart';
 import 'package:quotable/services/quotes/quote_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -20,7 +19,6 @@ import 'test_helpers.mocks.dart';
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DatabaseService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ApiService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<QuoteOfTheDayService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<QuoteService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<PreferenceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
@@ -32,7 +30,6 @@ void registerServices() {
   getAndRegisterAuthenticationService();
   getAndRegisterDatabaseService();
   getAndRegisterApiService();
-  getAndRegisterQuoteOfTheDayService();
   getAndRegisterQuotesQuoteService();
   getAndRegisterPreferenceService();
 // @stacked-mock-register
@@ -106,13 +103,6 @@ MockApiService getAndRegisterApiService() {
   _removeRegistrationIfExists<ApiService>();
   final service = MockApiService();
   locator.registerSingleton<ApiService>(service);
-  return service;
-}
-
-MockQuoteOfTheDayService getAndRegisterQuoteOfTheDayService() {
-  _removeRegistrationIfExists<QuoteOfTheDayService>();
-  final service = MockQuoteOfTheDayService();
-  locator.registerSingleton<QuoteOfTheDayService>(service);
   return service;
 }
 

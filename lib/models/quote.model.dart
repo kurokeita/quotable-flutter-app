@@ -12,18 +12,21 @@ class Quote {
   late String authorId;
   late String content;
   late Author? author;
+  late DateTime? createdAt;
 
-  Quote(
-    this.uuid,
-    this.authorId,
-    this.content,
+  Quote({
+    required this.uuid,
+    required this.authorId,
+    required this.content,
     this.author,
-  );
+    this.createdAt,
+  });
 
   Quote.fromMap(Map<String, Object?> map) {
     uuid = map['uuid'] as String;
     authorId = map['authorId'] as String;
     content = map['content'] as String;
+    createdAt = DateTime.parse(map['createdAt'] as String);
   }
 
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
@@ -52,10 +55,10 @@ class QuoteOfTheDay {
 
   static QuoteOfTheDay placeholder() => QuoteOfTheDay(
         quote: Quote(
-          BoneMock.chars(16),
-          BoneMock.chars(16),
-          BoneMock.chars(16),
-          Author(
+          uuid: BoneMock.chars(16),
+          authorId: BoneMock.chars(16),
+          content: BoneMock.chars(16),
+          author: Author(
               uuid: BoneMock.chars(16),
               name: BoneMock.chars(16),
               slug: BoneMock.chars(16)),

@@ -1,30 +1,29 @@
 import 'package:quotable/app/app.locator.dart';
 import 'package:quotable/models/quote.model.dart';
-import 'package:quotable/services/quotes/quote_of_the_day_service.dart';
+import 'package:quotable/services/quotes/quote_service.dart';
 import 'package:stacked/stacked.dart';
 
 class QuoteOfTheDayViewModel extends ReactiveViewModel {
-  final _quoteOfTheDayService = locator<QuoteOfTheDayService>();
+  final _quoteService = locator<QuoteService>();
 
-  QuoteOfTheDay? get quote => _quoteOfTheDayService.quote;
+  QuoteOfTheDay? get quote => _quoteService.quoteOfTheDay;
 
   @override
-  List<ListenableServiceMixin> get listenableServices =>
-      [_quoteOfTheDayService];
+  List<ListenableServiceMixin> get listenableServices => [_quoteService];
 
   Future<void> fetchQuote() async {
     setBusyForObject(quote, true);
-    await _quoteOfTheDayService.fetchQuote();
+    await _quoteService.fetchQuoteOfTheDay();
     setBusyForObject(quote, false);
   }
 
   Future<void> toggleFavorite() async {
-    await _quoteOfTheDayService.toggleFavorite();
+    await _quoteService.toggleFavorite(quote!.quote);
   }
 
   Future<void> refresh() async {
     setBusyForObject(quote, true);
-    await _quoteOfTheDayService.refresh();
+    await _quoteService.refreshQuoteOfTheDay();
     setBusyForObject(quote, false);
   }
 }
