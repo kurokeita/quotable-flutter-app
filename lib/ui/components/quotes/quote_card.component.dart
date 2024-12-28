@@ -15,7 +15,7 @@ class QuoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-      color: Theme.of(context).colorScheme.surface,
+      color: ColorScheme.of(context).surface,
       shadowColor: Colors.transparent,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -37,10 +37,7 @@ class QuoteCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () => {
-                        onPressed,
-                        // context.showToast(msg: isFavorite ? 'Removed' : 'Saved')
-                      },
+                  onPressed: onPressed,
                   color: isFavorite ? Colors.red : null,
                   icon: Icon(isFavorite
                       ? Icons.favorite_rounded
@@ -55,7 +52,7 @@ class QuoteCard extends StatelessWidget {
       dialogStyle: DialogStyle(titleDivider: true),
       title: Text(
         quote.author!.name,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: TextTheme.of(context).titleMedium,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -66,13 +63,13 @@ class QuoteCard extends StatelessWidget {
           quote.author!.description != null
               ? Text(
                   quote.author!.description!,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextTheme.of(context).bodyMedium,
                 )
               : const SizedBox.shrink(),
           quote.author!.bio != null
               ? Text(
                   quote.author!.bio!,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextTheme.of(context).bodyMedium,
                 )
               : const SizedBox.shrink(),
         ],

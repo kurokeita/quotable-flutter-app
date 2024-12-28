@@ -30,7 +30,7 @@ class QuoteOfTheDayView extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          backgroundColor: ColorScheme.of(context).surface,
           body: RefreshIndicator(
               child: const CustomScrollView(slivers: [
                 SliverFillRemaining(

@@ -4,6 +4,7 @@ import 'package:quotable/app/app.bottomsheets.dart';
 import 'package:quotable/app/app.dialogs.dart';
 import 'package:quotable/app/app.locator.dart';
 import 'package:quotable/app/app.router.dart';
+import 'package:quotable/ui/theme/theme.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
@@ -23,8 +24,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-        light: ThemeData.light(useMaterial3: true),
-        dark: ThemeData.dark(useMaterial3: true),
+        light: AppTheme.light,
+        dark: AppTheme.dark,
         initial: savedThemeMode ?? AdaptiveThemeMode.system,
         builder: (theme, darkTheme) => MaterialApp(
               initialRoute: Routes.startupView,
