@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:quotable/ui/common/app_colors.dart';
 import 'package:quotable/ui/common/ui_helpers.dart';
+import 'package:stacked/stacked.dart';
 
 import 'quote_list_viewmodel.dart';
 
 class QuoteListView extends StackedView<QuoteListViewModel> {
-  const QuoteListView({Key? key}) : super(key: key);
+  const QuoteListView({super.key});
 
   @override
   Widget builder(

@@ -9,7 +9,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'quote_of_the_day_viewmodel.dart';
 
 class QuoteOfTheDayView extends StatelessWidget {
-  QuoteOfTheDayView({Key? key}) : super(key: key);
+  QuoteOfTheDayView({super.key});
   final _bottomSheetService = locator<BottomSheetService>();
 
   @override
@@ -30,7 +30,7 @@ class QuoteOfTheDayView extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          backgroundColor: ColorScheme.of(context).surface,
           body: RefreshIndicator(
               child: const CustomScrollView(slivers: [
                 SliverFillRemaining(

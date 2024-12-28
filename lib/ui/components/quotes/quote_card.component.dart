@@ -8,15 +8,14 @@ class QuoteCard extends StatelessWidget {
   final VoidCallback onPressed;
 
   const QuoteCard(
-      {Key? key,
+      {super.key,
       required this.quote,
       required this.isFavorite,
-      required this.onPressed})
-      : super(key: key);
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) => Card(
-      color: Theme.of(context).colorScheme.surface,
+      color: ColorScheme.of(context).surface,
       shadowColor: Colors.transparent,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -53,7 +52,7 @@ class QuoteCard extends StatelessWidget {
       dialogStyle: DialogStyle(titleDivider: true),
       title: Text(
         quote.author!.name,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: TextTheme.of(context).titleMedium,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -64,13 +63,13 @@ class QuoteCard extends StatelessWidget {
           quote.author!.description != null
               ? Text(
                   quote.author!.description!,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextTheme.of(context).bodyMedium,
                 )
               : const SizedBox.shrink(),
           quote.author!.bio != null
               ? Text(
                   quote.author!.bio!,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextTheme.of(context).bodyMedium,
                 )
               : const SizedBox.shrink(),
         ],
