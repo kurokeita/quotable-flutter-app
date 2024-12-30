@@ -9,9 +9,8 @@ import 'package:quotable/services/quotes/quote_service.dart';
 import 'package:quotable/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:quotable/ui/bottom_sheets/quotes_list/quotes_list_sheet.dart';
 import 'package:quotable/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:quotable/ui/views/home/home_view.dart';
-import 'package:quotable/ui/views/quote_list/quote_list_view.dart';
 import 'package:quotable/ui/views/quote_of_the_day/quote_of_the_day_view.dart';
+import 'package:quotable/ui/views/setting/settings_view.dart';
 import 'package:quotable/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -19,10 +18,9 @@ import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
   routes: [
-    MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: QuoteListView),
     MaterialRoute(page: QuoteOfTheDayView),
+    MaterialRoute(page: SettingsView),
 // @stacked-route
   ],
   dependencies: [
