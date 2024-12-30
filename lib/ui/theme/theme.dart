@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 sealed class AppTheme {
   // The defined light theme.
-  static ThemeData get light {
-    ThemeData theme = FlexThemeData.light(
+  static ThemeData light = FlexThemeData.light(
       scheme: FlexScheme.purpleM3,
       surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
       blendLevel: 1,
@@ -74,18 +73,8 @@ sealed class AppTheme {
       cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
     );
 
-    BottomSheetThemeData bottomSheetTheme = theme.bottomSheetTheme;
-
-    return theme.copyWith(
-      bottomSheetTheme: bottomSheetTheme.copyWith(
-        clipBehavior: Clip.none,
-      ),
-    );
-  }
-
   // The defined dark theme.
-  static ThemeData get dark {
-    ThemeData theme = FlexThemeData.dark(
+  static ThemeData dark = FlexThemeData.dark(
       scheme: FlexScheme.purpleM3,
       surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
       blendLevel: 2,
@@ -155,13 +144,4 @@ sealed class AppTheme {
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
     );
-
-    BottomSheetThemeData bottomSheetTheme = theme.bottomSheetTheme;
-
-    return theme.copyWith(
-      bottomSheetTheme: bottomSheetTheme.copyWith(
-        clipBehavior: Clip.none,
-      ),
-    );
-  }
 }
