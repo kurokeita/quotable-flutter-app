@@ -8,5 +8,6 @@
             "source.fixAll": "always",
             "source.organizeImports": "always",
         }
-    }
+    },
+    "files.eol": "\n",
 }
