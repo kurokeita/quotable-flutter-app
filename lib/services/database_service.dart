@@ -55,7 +55,10 @@ class DatabaseService implements InitializableDependency {
   }
 
   Future<void> resetDatabase() async {
+    if (_db != null) {
+      await _db!.close();
+    }
+
     await deleteDatabase(join(await getDatabasesPath(), 'quotable.db'));
-    await init();
   }
 }

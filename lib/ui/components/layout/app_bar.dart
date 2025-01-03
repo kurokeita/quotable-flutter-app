@@ -1,42 +1,33 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:quotable/services/preferences/preference_service.dart';
+import 'package:quotable/app/app.locator.dart';
+import 'package:quotable/app/app.router.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final bool centerTitle;
+  final _navigationService = locator<NavigationService>();
 
-  const CustomAppBar(
-      {super.key, required this.title, this.centerTitle = false});
+  CustomAppBar({super.key, required this.title, this.centerTitle = false});
 
   @override
   Size get preferredSize => Size.copy(AppBar().preferredSize);
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-        valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
-        builder: (context, mode, child) => AppBar(
-              title: title,
-              centerTitle: centerTitle,
-              actions: [
-                IconButton(
-                  icon: _getIcon(context),
-                  onPressed: () => PreferenceService.toggleThemeMode(context),
-                )
-              ],
-            ));
-  }
+    final currentRoute = ModalRoute.of(context)?.settings.name;
 
-  Icon _getIcon(BuildContext ctx) {
-    final currentMode = PreferenceService.getCurrentMode(ctx);
-    switch (currentMode) {
-      case AdaptiveThemeMode.light:
-        return const Icon(Icons.light_mode);
-      case AdaptiveThemeMode.dark:
-        return const Icon(Icons.dark_mode);
-      default:
-        return const Icon(Icons.auto_mode_rounded);
-    }
+    return AppBar(
+      title: title,
+      centerTitle: centerTitle,
+      actions: currentRoute != Routes.settingsView
+          ? [
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: _navigationService.navigateToSettingsView,
+              )
+            ]
+          : null,
+    );
   }
 }

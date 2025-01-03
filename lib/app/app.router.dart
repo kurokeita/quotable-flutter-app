@@ -5,78 +5,64 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
-import 'package:quotable/ui/views/home/home_view.dart' as _i2;
-import 'package:quotable/ui/views/quote_list/quote_list_view.dart' as _i4;
 import 'package:quotable/ui/views/quote_of_the_day/quote_of_the_day_view.dart'
-    as _i5;
-import 'package:quotable/ui/views/startup/startup_view.dart' as _i3;
+    as _i3;
+import 'package:quotable/ui/views/setting/settings_view.dart' as _i4;
+import 'package:quotable/ui/views/startup/startup_view.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i6;
 
 class Routes {
-  static const homeView = '/home-view';
-
   static const startupView = '/startup-view';
-
-  static const quoteListView = '/quote-list-view';
 
   static const quoteOfTheDayView = '/quote-of-the-day-view';
 
+  static const settingsView = '/settings-view';
+
   static const all = <String>{
-    homeView,
     startupView,
-    quoteListView,
     quoteOfTheDayView,
+    settingsView,
   };
 }
 
 class StackedRouter extends _i1.RouterBase {
   final _routes = <_i1.RouteDef>[
     _i1.RouteDef(
-      Routes.homeView,
-      page: _i2.HomeView,
-    ),
-    _i1.RouteDef(
       Routes.startupView,
-      page: _i3.StartupView,
-    ),
-    _i1.RouteDef(
-      Routes.quoteListView,
-      page: _i4.QuoteListView,
+      page: _i2.StartupView,
     ),
     _i1.RouteDef(
       Routes.quoteOfTheDayView,
-      page: _i5.QuoteOfTheDayView,
+      page: _i3.QuoteOfTheDayView,
+    ),
+    _i1.RouteDef(
+      Routes.settingsView,
+      page: _i4.SettingsView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.HomeView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.HomeView(),
+    _i2.StartupView: (data) {
+      return _i5.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
-    _i3.StartupView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.StartupView(),
-        settings: data,
-      );
-    },
-    _i4.QuoteListView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.QuoteListView(),
-        settings: data,
-      );
-    },
-    _i5.QuoteOfTheDayView: (data) {
+    _i3.QuoteOfTheDayView: (data) {
       final args = data.getArgs<QuoteOfTheDayViewArguments>(
         orElse: () => const QuoteOfTheDayViewArguments(),
       );
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => _i5.QuoteOfTheDayView(key: args.key),
+      return _i5.MaterialPageRoute<dynamic>(
+        builder: (context) => _i3.QuoteOfTheDayView(key: args.key),
+        settings: data,
+      );
+    },
+    _i4.SettingsView: (data) {
+      return _i5.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.SettingsView(),
         settings: data,
       );
     },
@@ -92,7 +78,7 @@ class StackedRouter extends _i1.RouterBase {
 class QuoteOfTheDayViewArguments {
   const QuoteOfTheDayViewArguments({this.key});
 
-  final _i6.Key? key;
+  final _i5.Key? key;
 
   @override
   String toString() {
@@ -111,21 +97,7 @@ class QuoteOfTheDayViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i7.NavigationService {
-  Future<dynamic> navigateToHomeView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.homeView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
+extension NavigatorStateExtension on _i6.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -140,22 +112,8 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToQuoteListView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.quoteListView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> navigateToQuoteOfTheDayView({
-    _i6.Key? key,
+    _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -170,14 +128,14 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomeView([
+  Future<dynamic> navigateToSettingsView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.homeView,
+    return navigateTo<dynamic>(Routes.settingsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -198,22 +156,8 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithQuoteListView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.quoteListView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> replaceWithQuoteOfTheDayView({
-    _i6.Key? key,
+    _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -222,6 +166,20 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.quoteOfTheDayView,
         arguments: QuoteOfTheDayViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSettingsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.settingsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
