@@ -10,4 +10,5 @@
         }
     },
     "files.eol": "\n",
+    "git.autoRepositoryDetection": false,
 }
