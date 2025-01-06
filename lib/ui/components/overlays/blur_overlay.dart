@@ -17,7 +17,7 @@ class BlurOverlayRoute<T> extends ModalRoute<T> {
   bool get maintainState => true;
 
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 200);
+  Duration get transitionDuration => const Duration(milliseconds: 300);
 
   @override
   bool get barrierDismissible => true;
@@ -35,21 +35,20 @@ class BlurOverlayRoute<T> extends ModalRoute<T> {
           canPop: true,
           child: GestureDetector(
             onTap: pop,
-            child: TweenAnimationBuilder(
-              tween: Tween<double>(begin: 0.1, end: blur ?? 10),
-              duration: Duration(milliseconds: 300),
-              builder: (context, double? val, Widget? child) {
-                return BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: val ?? 0,
-                    sigmaY: val ?? 0,
-                  ),
-                  child: Container(color: Colors.transparent),
-                );
-              },
-            ),
+            child: Container(color: Colors.transparent),
           ),
         ),
+      );
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation, Widget child) =>
+      BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: animation.value * (blur ?? 10),
+          sigmaY: animation.value * (blur ?? 10),
+        ),
+        child: child,
       );
 
   void pop() {
