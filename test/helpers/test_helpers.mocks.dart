@@ -6,6 +6,7 @@
 import 'dart:async' as _i7;
 import 'dart:ui' as _i8;
 
+import 'package:adaptive_theme/adaptive_theme.dart' as _i14;
 import 'package:flutter/material.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i5;
@@ -986,6 +987,43 @@ class MockPreferenceService extends _i1.Mock implements _i13.PreferenceService {
   _i7.Future<void> init() => (super.noSuchMethod(
         Invocation.method(
           #init,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i14.AdaptiveThemeMode getCurrentMode(_i6.BuildContext? context) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCurrentMode,
+          [context],
+        ),
+        returnValue: _i14.AdaptiveThemeMode.light,
+        returnValueForMissingStub: _i14.AdaptiveThemeMode.light,
+      ) as _i14.AdaptiveThemeMode);
+
+  @override
+  void setThemeMode(
+    _i6.BuildContext? context,
+    _i14.AdaptiveThemeMode? mode,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #setThemeMode,
+          [
+            context,
+            mode,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i7.Future<void> resetApp() => (super.noSuchMethod(
+        Invocation.method(
+          #resetApp,
           [],
         ),
         returnValue: _i7.Future<void>.value(),

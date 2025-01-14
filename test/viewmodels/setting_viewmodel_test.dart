@@ -4,7 +4,7 @@ import 'package:quotable/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('QuoteListViewModel Tests -', () {
+  group('SettingViewModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });
